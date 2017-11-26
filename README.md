@@ -4,4 +4,5 @@ Show a webpage with rtl_443 decoded output, so anyone can see what's decoding at
 ## Used tools
 * Python 3
 * Flask
-
+* librtlsdr
+* rtl_443
