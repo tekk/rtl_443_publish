@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-from flask import flask, send_file
+import flask
 from shelljob import proc
 
 app = flask.Flask(__name__)
+g = proc.Group()
+p = g.run( [ "rtl_433", "-G" ] )
 
 @app.route( '/' )
 def index():
     html_header = """ <!DOCTYPE html>
 	<html>
 	<head>
-	<title>443.92 MHz Live Stream</title>
+	<title>433.92 MHz Live Stream</title>
 	<style>
 	body { background-color: #111; color: #eee; }
 	h1 { color: #ffe; }
@@ -22,9 +24,6 @@ def index():
 	<body>
         <h1>rtl_433 Live Webstream</h1>
 	<pre>"""
-
-    g = proc.Group()
-    p = g.run( [ "rtl_433", "-G" ] )
 
     def read_process():
         yield html_header
